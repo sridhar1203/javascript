@@ -333,3 +333,111 @@ console.log(String(num4) + str4); // This will print "105", as the number 10 is 
 console.log(num4 - Number(str4)); // This will print 5, as the string "5" is explicitly converted to a number and subtracted from 10
 console.log(num4 * Number(str4)); // This will print 50, as the string "5" is explicitly converted to a number and multiplied with 10
 console.log(num4 / Number(str4)); // This will print 2, as the string "5" is explicitly converted to a number and divided into 10
+
+
+// break;
+//   → Used inside a loop (for, while, do-while) or switch.
+//   → Just the keyword and semicolon. No expression.
+//
+// continue;
+//   → Used only inside a loop (for, while, do-while). Not in switch.
+//   → Just the keyword and semicolon. No expression.
+//
+// Both are usually inside an if, so they run only when a condition is true:
+//
+//   for (...) {
+//     if (condition) {
+//       break;     // exit the loop
+//     }
+//   }
+//
+//   for (...) {
+//     if (condition) {
+//       continue;   // skip to next iteration
+//     }
+//   }
+
+// Break Statement:-
+// It is used to break the loop and exit the loop.
+// Syntax: break;
+
+// Continue Statement:-
+// It is used to skip the current iteration and continue with the next iteration.
+// Syntax: continue;
+
+// ---------------------------------------------------------------------------------
+//Example of break statement
+for(let i=1;i<=10;i++) {
+    if(i==5) {
+        break;  // Exit loop immediately
+    }
+    console.log(i);
+}
+// Output: 1 2 3 4
+
+
+// ---------------------------------------------------------------------------------
+//Example of continue statement
+for(let i=1;i<=10;i++) {
+    if(i==5) {
+        continue;  // Skip this iteration, go to next
+    }
+    console.log(i);
+}
+// Output: 1 2 3 4 6 7 8 9 10
+
+
+//Array methods in JavaScript
+
+//push() - adds an element to the end of the array
+//pop() - removes the last element from the array
+//shift() - removes the first element from the array
+//unshift() - adds an element to the beginning of the array
+//splice() - adds/removes elements from the array at a specific index
+//slice() - returns a shallow copy of a portion of the array into a new array object
+//indexOf() - returns the first index at which a given element can be found in the array, or -1 if it is not present
+//includes() - determines whether an array includes a certain value among its entries, returning true or false as appropriate
+//forEach() - executes a provided function once for each array element
+//map() - creates a new array populated with the results of calling a provided function on every element in the calling array
+//filter() - creates a new array with all elements that pass the test implemented by the provided function
+//reduce() - executes a reducer function on each element of the array, resulting in a single output value
+// example of array methods in JavaScript
+let arr1 = [1, 2, 3, 4, 5];
+arr1.push(6);
+console.log(arr1); // This will print [1, 2, 3, 4, 5, 6]
+arr1.pop();
+console.log(arr1); // This will print [1, 2, 3, 4, 5]
+arr1.shift();
+console.log(arr1);// This will print [2, 3, 4, 5]
+arr1.unshift(0);
+console.log(arr1);// This will print [0, 1, 2, 3, 4, 5]
+arr1.splice(2, 2); // This will remove 2 element at index 2
+console.log(arr1);
+let newArr = arr1.slice(1, 4);
+console.log(newArr); // This will print [1, 2, 3]
+console.log(arr1.indexOf(3)); // This will print 2, as 3 is at index 2
+
+console.log(arr1.includes(4)); // This will print true, as 4 is in the array
+arr1.forEach((element) => {
+    console.log(element); // This will print each element of the array
+}
+);
+let mappedArr = arr1.map((element) => element * 2);
+console.log(mappedArr); // This will print [0, 2, 6, 8, 10], as each element is multiplied by 2
+let filteredArr = arr1.filter((element) => element % 2 === 0);//6 also the even number but it is removed by splice method
+console.log(filteredArr);
+// This will print [0, 2, 8], as it filters out the even numbers from the array
+let reducedValue = arr1.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+console.log(reducedValue); // This will print 15, as it sums up all the elements of the array starting with an initial value of 0
+
+
+//some method in array
+// The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
+let arr2 = [1, 2, 3, 4, 5];
+let hasEvenNumber = arr2.some((element) => element % 2 === 0);
+console.log(hasEvenNumber); // This will print true, as there are even numbers in the array (2 and 4)
+
+//every method in array
+// The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+let hasOnlyEvenNumbers = arr2.every((element) => element % 2 === 0);
+console.log(hasOnlyEvenNumbers); // This will print false, as not all elements in the array are even (1, 3, and 5 are odd)
