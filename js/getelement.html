@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy Page</title>
+</head>
+<body>
+    <h1 id =one>My first heading</h1>
+    <h2 class="two">My second heading</h2>
+    <h3 class="two">my third calss</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.
+    Quibusdam vero expedita sit facere, asperiores eos!
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.
+    Quibusdam vero expedita sit facere, asperiores eos!
+    </p>
+    <button onclick="change()">
+        click me!!
+    </button>
+</body>
+<script >
+    document.getElementById("one").style.color = "red";//uninque id
+    document.getElementsByClassName("two")[1].style.fontSize = "50px";//mulitle class will there so use the 
+    document.querySelector('p').style.border = "2px solid red";//first element of the tag
+    function change(){
+        document.querySelectorAll('p')[1].style.backgroundColor = "yellow";//all element of the tag
+    }
+</script>
+</html>
+<!--tag name-->

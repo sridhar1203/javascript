@@ -441,3 +441,176 @@ console.log(hasEvenNumber); // This will print true, as there are even numbers i
 // The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
 let hasOnlyEvenNumbers = arr2.every((element) => element % 2 === 0);
 console.log(hasOnlyEvenNumbers); // This will print false, as not all elements in the array are even (1, 3, and 5 are odd)
+
+
+// ============================================
+// TRICKS TO REMEMBER (read this first!)
+// ============================================
+//
+// ROUNDING (think of 4.7 on a number line)
+//   Math.round(x)  → nearest integer  4.7→5, 4.4→4  (round = normal round)
+//   Math.floor(x)  → down (floor = ground below)  4.7→4, -1.2→-2
+//   Math.ceil(x)   → up (ceiling above)  4.1→5, -1.2→-1
+//
+// MIN / MAX
+//   Math.min(a, b, ...)  → smallest of the arguments
+//   Math.max(a, b, ...)  → largest (use with spread for array: Math.max(...arr))
+//
+// RANDOM
+//   Math.random()  → 0 to 1 (never 1). Trick: "random float in [0, 1)"
+//   Integer in range [min, max] inclusive: Math.floor(Math.random() * (max - min + 1)) + min
+//
+// OTHER
+//   Math.abs(x)   → absolute value (remove minus)
+//   Math.sqrt(x)  → square root
+//   Math.pow(a,b) or a ** b  → a to the power of b
+//
+// ============================================
+// MATH METHODS (Beginner Level)
+// ============================================
+
+// Rounding (trick: floor = down, ceil = up, round = nearest)
+console.log(Math.round(4.7));   // 5
+console.log(Math.floor(4.7));   // 4
+console.log(Math.ceil(4.1));    // 5
+
+// Min / max (trick: spread array for Math.max(...arr))
+console.log(Math.max(1, 5, 3));  // 5
+console.log(Math.min(1, 5, 3)); // 1
+
+// Random: 0 to 1 (never exactly 1)
+console.log(Math.random()); // e.g. 0.7234...
+
+// Other
+console.log(Math.abs(-7));   // 7
+console.log(Math.sqrt(16));  // 4
+console.log(Math.pow(2, 3)); // 8  (same: 2 ** 3)
+
+
+//hosisting in JavaScript
+// Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their containing scope during the compilation phase. This means that you can use variables and functions before they are declared in the code. However, only the declarations are hoisted, not the initializations. 
+// For example:
+console.log(hoistedVar); // This will print undefined, as the declaration of hoistedVar is hoisted but not its initialization
+var hoistedVar = "I am hoisted!";
+console.log(hoistedVar); // This will print "I am hoisted!", as now the variable is initialized
+
+//spread operator in JavaScript
+// The spread operator (...) allows an iterable such as an array or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
+// For example:
+let arr3 = [1, 2, 3];
+let newArr3 = [...arr3, 4, 5]; // This will create a new array by spreading the elements of arr3 and adding 4 and 5
+console.log(newArr3); // This will print [1, 2, 3, 4, 5]
+
+//object in JavaScript
+// An object is a collection of key-value pairs, where the keys are strings (or symbols) and the values can be of any data type. Objects are used to store and organize data in JavaScript. 
+// For example: 
+let person = {
+    name: "Alice",
+    age: 25,
+    greet: function() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }
+};
+
+//array inside another array in JavaScript
+// An array can contain other arrays as its elements, creating a multi-dimensional array. This is often used to represent matrices or tables of data.
+// For example:
+let matrix = [3,"hello", true, null, "hello",{name: "Alice", age: 25}, 
+    [1, 2, 3],
+    ["a", "b", "c"],
+    [true, false, true]
+];
+console.log(matrix[5]); 
+console.log(matrix[5].name);
+
+//how can i add the element in object in JavaScript
+// You can add a new key-value pair to an object by simply assigning a value to a new key. 
+// For example:
+let obj2 = { name: "Bob", age: 30 };
+obj2.city = "New York"; // This will add a new key 'city' with the value 'New York' to the object
+console.log(obj2); // This will print { name: "Bob", age: 30, city: "New York" }
+
+//how can i print the element in object in JavaScript using for loop
+//example of printing the elements of an object using a for loop
+let obj3 = { name: "Charlie", age: 35, city: "Los Angeles" };
+
+for (let key in obj3) {
+    console.log(key, obj3[key]); // This will print each key and its corresponding value in the object
+}
+obj3.country = "USA";
+console.log(obj3); // This will print { name: "Charlie", age: 35, city: "Los Angeles", country: "USA" }
+
+
+let arr11= [1, 2, 3, 4, 5];
+let arr21 = [6, 7, 8, 9, 10]; // This will print "1,2,3,4,56,7,8,9,10", as the + operator concatenates the two arrays as 
+ arr4 =[...arr11, ...arr21];// This will print 1 2 3 4 5 6 7 8 9 10, as the spread operator expands the elements of both arrays into a single list of values
+ console.log(typeof arr4);// This will print "object", as arrays are a type of object in JavaScript
+
+
+ let arr12= [1, 2, 3, 4, 5];
+let arr22 = [6, 7, 8, 9, 10];
+arr3=arr12+arr22;
+console.log(arr3); 
+console.log(typeof arr3);
+
+// difference between rest and spread operator in JavaScript
+// table format difference between rest and spread operator in JavaScript
+
+// | Feature           | Rest Operator (...)                          | Spread Operator (...)    
+// |-------------------|---------------------------------------------|----------------------------
+// | Purpose           | Collects multiple elements into an array     | Expands an array into individual elements
+// | Usage             | Used in function parameters to gather remaining arguments into an array | Used in function calls or array literals to spread elements of an array
+// | Example           | function sum(...numbers) { return numbers.reduce((a, b) => a + b, 0); } | let arr1 = [1, 2, 3]; let arr2 = [...arr1, 4, 5]; // arr2 is [1, 2, 3, 4, 5]
+// | Functionality     | Gathers remaining arguments into an array     | Expands an array into individual elements
+//example for each operator
+// Rest operator example
+function sum(a,...numbers) {
+    console.log(a); // This will print the first argument passed to the function
+    return numbers.reduce((a, b) => a + b, 0);
+} 
+
+console.log(sum(1, 2, 3,4,5,6,7,8,9,10));// This will print 55, as the rest operator gathers all the arguments into an array and then sums them up
+
+// Spread operator example
+let arr5 = [1, 2, 3];
+let arr6 = [...arr5, 4, 5];
+console.log(arr6); // This will print [1, 2, 3, 4, 5], as the spread operator expands the elements of arr5 and adds 4 and 5 to create a new array
+
+//shadowcoping in JavaScript
+// Shadow copying (also known as shallow copying) is a technique where a new object is created, but it references the same underlying data as the original object. This means that changes made to the nested objects will affect both the original and the copied object, as they share the same reference.
+// For example:
+let original = { name: "Alice", age: 25, address: { city: "New York", country: "USA" } };
+let shadowCopy = { ...original };  
+console.log(shadowCopy); // This will print { name: "Alice", age: 25, address: { city: "New York", country: "USA" } }
+shadowCopy.name = "Bob";
+console.log(original.name); // This will print "Alice", as the name property is a primitive value and is copied by value
+shadowCopy.address.city = "Los Angeles";
+console.log(original.address.city); // This will print "Los Angeles", as the address property is an object and is copied by reference, so both original and shadowCopy share the same address object
+console.log(shadowCopy); // This will print { name: "Bob", age: 25, address: { city: "Los Angeles", country: "USA" } }
+
+//deepcopying in JavaScript
+// Deep copying is a technique where a new object is created, and all nested objects are also copied recursively. This means that changes made to the nested objects in the copied object will not affect the original object, as they are completely separate entities.
+// For example:
+let original2 = { name: "Alice", age: 25, address: { city: "New York", country: "USA" } };
+let deepCopy = JSON.parse(JSON.stringify(original2)); // This will create a deep copy of the original object
+console.log(deepCopy);
+deepCopy.name = "Bob";
+console.log(original2.name);
+deepCopy.address.city = "Los Angeles";
+console.log(original2.address.city);
+console.log(deepCopy);
+
+//Dom in JavaScript
+// The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a document as a tree of objects, where each object corresponds to a part of the document (such as an element, attribute, or text). The DOM allows developers to manipulate the content, structure, and style of a web page dynamically using JavaScript.
+// For example, you can use the DOM to change the text of an element, add new elements to the page, or respond to user interactions like clicks and form submissions. The DOM provides methods and properties to access and modify the elements of a web page, making it a powerful tool for creating interactive and dynamic web applications.
+
+//getElementById() - selects an element by its ID   
+//getElementsByClassName() - selects elements by their class name
+//getElementsByTagName() - selects elements by their tag name
+//querySelector() - selects the first element that matches a CSS selector
+//querySelectorAll() - selects all elements that match a CSS selector
+// example of DOM manipulation in JavaScript
+// Assuming we have the following HTML:
+// <div id="myDiv" class="myClass">Hello, World!</div>
+
+
